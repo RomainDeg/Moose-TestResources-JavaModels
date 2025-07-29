@@ -11,6 +11,12 @@ Class {
 }
 
 { #category : 'accessing' }
+TestJavaModelBuilder class >> defaultRootFolder [
+"not ideal at all..."
+	^ './pharo-local/iceberg/RomainDeg/Moose-TestResources-JavaModels/Model-Sources' asFileReference absolutePath
+]
+
+{ #category : 'accessing' }
 TestJavaModelBuilder class >> libraryModel [
 
 	^ libraryModel ifNil: [ self loadLibraryModel ]
@@ -421,6 +427,7 @@ TestJavaModelBuilder class >> loadLibraryModel [
 	libraryModel := FamixJavaModel importFromMSEStream:
 		                self libraryModelMSEString readStream.
 	libraryModel name: 'library_model'.
+	libraryModel rootFolder: self defaultRootFolder.
 	^ libraryModel 
 ]
 
@@ -430,6 +437,7 @@ TestJavaModelBuilder class >> loadLibraryModelClone [
 	libraryModelClone := FamixJavaModel importFromMSEStream:
 		                self libraryModelMSEString readStream.
 	libraryModelClone name: 'library_model_clone'.
+	libraryModelClone  rootFolder: self defaultRootFolder.
 	^ libraryModelClone 
 ]
 
@@ -439,6 +447,7 @@ TestJavaModelBuilder class >> loadMainModel [
 	mainModel := FamixJavaModel importFromMSEStream:
 		                self mainModelMSEString readStream.
 	mainModel name: 'main_model'.
+	mainModel rootFolder: self defaultRootFolder.
 	^ mainModel 
 ]
 
