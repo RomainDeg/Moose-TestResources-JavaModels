@@ -1,0 +1,8 @@
+#ignore all java build stuff
+**/bin
+
+#ignore all model files (their content must be in the builder class)
+*.mse
+
+#ignore Makefile so that the VerveineJ path put by an user remains private
+Makefile
