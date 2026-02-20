@@ -437,30 +437,25 @@ TestJavaModelBuilder class >> libraryModelMSEString [
 { #category : 'accessing' }
 TestJavaModelBuilder class >> loadLibraryModel [ 
 
-	libraryModel := FamixJavaModel importFromMSEStream:
-		                self libraryModelMSEString readStream.
+	libraryModel := (FamixJavaFoldersImporter importFolders: { TestJavaModelBridge sources / 'library_project' }) anyOne.
 	libraryModel name: 'library_model'.
-	libraryModel rootFolder: self defaultRootFolder.
 	^ libraryModel 
 ]
 
 { #category : 'accessing' }
 TestJavaModelBuilder class >> loadLibraryModelClone [ 
 
-	libraryModelClone := FamixJavaModel importFromMSEStream:
-		                self libraryModelMSEString readStream.
+	libraryModelClone := (FamixJavaFoldersImporter importFolders: { TestJavaModelBridge sources / 'library_project' }) anyOne.
 	libraryModelClone name: 'library_model_clone'.
-	libraryModelClone  rootFolder: self defaultRootFolder.
 	^ libraryModelClone 
 ]
 
 { #category : 'accessing' }
 TestJavaModelBuilder class >> loadMainModel [ 
 
-	mainModel := FamixJavaModel importFromMSEStream:
-		                self mainModelMSEString readStream.
+	
+	mainModel := (FamixJavaFoldersImporter importFolders: { TestJavaModelBridge sources / 'main_project' }) anyOne.
 	mainModel name: 'main_model'.
-	mainModel rootFolder: self defaultRootFolder.
 	^ mainModel 
 ]
 
