@@ -11,6 +11,14 @@ Class {
 }
 
 { #category : 'accessing' }
+TestJavaModelBuilder class >> flush [
+
+	| sourceFolder |
+	sourceFolder := (TestJavaModelBridge sources / 'main_project').
+	(self pathToModelForSourceAt: sourceFolder) ensureDeleteAll 
+]
+
+{ #category : 'accessing' }
 TestJavaModelBuilder class >> generateAndLoadSimpleModelAt: sourceFolder named: aString [
 	"Simple model == a model without classpath needed for JDT to have accurate bindings"
 
@@ -99,7 +107,8 @@ TestJavaModelBuilder class >> loadMainModel [
 
 	importer ensureVerveineJ.
 	importer generateJsonOfProjects.
-	sourceFolder asFileReference
+
+	(importer jsonForFolder: sourceFolder) asFileReference
 		readStreamDo: [ :st | FamixJavaModel new importFromJSONStream: st ].
 
 	^ self loadModelAt: sourceFolder withName: 'main_model'
