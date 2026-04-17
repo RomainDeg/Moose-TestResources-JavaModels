@@ -59,7 +59,7 @@ TestJavaModelBuilder class >> loadLibraryModel [
 
 	| sourceFolder |
 	sourceFolder := TestJavaModelBridge sources / 'library_project'
-	                / 'target'.
+	                / 'src'.
 
 	^ self
 		  generateAndLoadSimpleModelAt: sourceFolder
@@ -71,7 +71,7 @@ TestJavaModelBuilder class >> loadLibraryModelClone [
 
 	| sourceFolder |
 	sourceFolder := TestJavaModelBridge sources / 'library_project'
-	                / 'target'.
+	                / 'src'.
 
 	^ self
 		  generateAndLoadSimpleModelAt: sourceFolder
