@@ -58,8 +58,7 @@ TestJavaModelBuilder class >> libraryModelClone [
 TestJavaModelBuilder class >> loadLibraryModel [
 
 	| sourceFolder |
-	sourceFolder := TestJavaModelBridge sources / 'library_project'
-	                / 'src'.
+	sourceFolder := TestJavaModelBridge sources / 'library_project'.
 
 	^ self
 		  generateAndLoadSimpleModelAt: sourceFolder
@@ -70,8 +69,7 @@ TestJavaModelBuilder class >> loadLibraryModel [
 TestJavaModelBuilder class >> loadLibraryModelClone [
 
 	| sourceFolder |
-	sourceFolder := TestJavaModelBridge sources / 'library_project'
-	                / 'src'.
+	sourceFolder := TestJavaModelBridge sources / 'library_project'.
 
 	^ self
 		  generateAndLoadSimpleModelAt: sourceFolder
@@ -99,8 +97,6 @@ TestJavaModelBuilder class >> loadMainModel [
 
 	importer ensureVerveineJ.
 	importer generateJsonOfProjects.
-	sourceFolder asFileReference
-		readStreamDo: [ :st | FamixJavaModel new importFromJSONStream: st ].
 
 	^ self loadModelAt: sourceFolder withName: 'main_model'
 ]
